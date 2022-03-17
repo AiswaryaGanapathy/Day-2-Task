@@ -1,0 +1,49 @@
+
+Day 2 Task
+
+1. Difference between Node JS and Browser
+
+ 	Node JS	Browser
+Basic understanding	JS Runtime environemnt	In addition to JS engine also has rendering engine for rendering the page
+Usuage	Back end	Front end
+JS Engine	V8 engine	Based on the browser, V8 for chrome, Spider Monkey for Firefox,etc
+Global Object	Global	Windows
+ASynchronous Activity 	Libuv	WebAPIs
+Module System	Common JS	ES6 Module system
+
+
+2. How does the browser actually render a website?
+
+ 
+
+The browser actually render a website by following these steps after reading a HTML file, 
+
+1. DOM Construction (Document Object Model)
+
+Once we get HTML file, the browser starts construction the DOM tree by creating each HTML element as node. It will be created for different objects. Since our HTML elements in the HTML file are nested inside each other, the browser needs to replicate that but using Node objects it has previously created. This will help the browser efficiently render and manage the webpage throughout its lifecycle.
+
+2. CSS Object Model (CSSOM)
+
+After constructing the DOM, the browser reads CSS from all the sources (external, embedded, inline, user-agent, etc.) and construct a CSSOM. CSSOM stands for CSS Object Model which is a Tree Like structure just like DOM.Each node in this tree contains CSS style information that will be applied to DOM elements that it target (specified by the selector). CSSOM, however, does not contain DOM elements which can’t be printed on the screen like <meta>, <script>, <title> etc.
+
+3.Render Tree
+Render-Tree is also a tree-like structure constructed by combining DOM and CSSOM trees together. The browser has to calculate the layout of each visible element and paint them on the screen, for that browser uses this Render-Tree. Hence, unless Render-Tree isn’t constructed, nothing is going to get printed on the screen which is why we need both DOM and CSSOM trees.
+4.Layout operation
+The first browser creates the layout of each individual Render-Tree node. The layout consists of the size of each node in pixels and where (position) it will be printed on the screen. This process is called layout since the browser is calculating the layout information of each node.
+5.Paint operation
+Until now we have a list of geometries that need to be printed on the screen. Since elements (or a sub-tree) in the Render-Tree can overlap each other and they can have CSS properties that make them frequently change the look, position, or geometry (such as animations), the browser creates a layer for it.Now that we have layers, we can combine them and draw them on the screen. But the browser does not draw all the layers in a single go. Each layer is drawn separately first.
+6.Compositing operation
+Until now, we haven’t drawn a single pixel on the screen. What we have are different layers (bitmap images) that should be drawn on the screen in a specific order. In compositing operations, these layers are sent to GPU to finally draw it on the screen.
+The job of creating DOM Tree, CSSOM Tree, and handle rendering logic is done using a piece of software called a Browser Engine (also known as Rendering Engine or Layout Engine) which resides inside the browser. This browser engine contains all the necessary elements and logic to render a web page from HTML code to actual pixels on the screen.
+3.Execute the below code and write your description 
+typeof(1) - number
+typeof(1.1)- number
+typeof('1.1') - string
+typeof(true)- boolean
+typeof(null)- object
+typeof(undefined) - undefined
+typeof([])-object
+typeof({})-object
+typeof(NaN)-number
+
+
